@@ -1,5 +1,5 @@
 ;;; The .emacs file of Trinity
-;;;   last updated 10 May 2014, 10:57:14 tquirk
+;;;   last updated 10 May 2014, 11:24:58 tquirk
 
 (defalias 'perl-mode 'cperl-mode)
 
@@ -15,8 +15,11 @@
 (setq fill-column 74)
 (setq display-time-day-and-date t)
 (setq display-time-24hr-format t)
-;;; Macs require some massaging to make meta work correctly
-(setq x-alt-keysym 'meta)
+;;; Macs require some massaging
+(if (eq system-type 'darwin)
+    (progn
+      (setq dired-use-ls-dired nil)
+      (setq x-alt-keysym 'meta)))
 
 ;;; Font-lock stuff
 (global-font-lock-mode t)
