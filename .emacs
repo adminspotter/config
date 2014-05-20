@@ -30,7 +30,7 @@
 	(java-mode . 2)))
 
 ;;; Timestamp stuff
-(add-hook 'write-file-hooks 'time-stamp)
+(add-hook 'before-save-hook 'time-stamp)
 (setq time-stamp-active t)
 (setq time-stamp-format "%02d %3b %4y, %02H:%02M:%02S %u")
 (setq time-stamp-start "last updated ")
