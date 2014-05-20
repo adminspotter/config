@@ -41,12 +41,16 @@
 (add-hook 'cperl-mode-hook 'outline-minor-mode)
 (setq outline-minor-mode-prefix "\C-@")
 
+;;; Ediff mode
+(if (eq ediff-window-setup-function 'ediff-setup-windows-multiframe)
+    (ediff-toggle-multiframe))
+    
 ;;; Functions
 (defun perltidy-buffer ()
-  "Run perltidy on the current buffer and open a new buffer with the output"
+  "Run perltidy on the current buffer and enters ediff mode with the changes"
   (interactive)
   (shell-command (concat "perltidy -st " (buffer-file-name (current-buffer))))
-  (beginning-of-buffer))
+  (ediff-buffers (current-buffer) "*Shell Command Output*"))
 
 (defun list-contains-p (list atom)
   "Search a list for a given atom"
