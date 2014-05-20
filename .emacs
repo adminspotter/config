@@ -37,17 +37,9 @@
 (setq time-stamp-end "$")
 
 ;;; Code folding stuff
-; Hideshow
-;(load-library "hideshow")
-;(add-hook 'cperl-mode-hook 'hs-minor-mode)
 ; Outline minor mode
 (add-hook 'cperl-mode-hook 'outline-minor-mode)
-(define-prefix-command 'cm-map nil "Outline-")
-(define-key cm-map "C-<left>" 'hide-subtree)
-(define-key cm-map "C-<right>" 'show-subtree)
-(define-key cm-map "C-<up>" 'hide-sublevels)
-(define-key cm-map "C-<down>" 'show-all)
-(global-set-key "C-@" cm-map)
+(setq outline-minor-mode-prefix "\C-@")
 
 ;;; Functions
 (defun perltidy-buffer ()
@@ -104,7 +96,9 @@
     )
   "Trinity's C Programming Style")
 (defun trinity-c-mode-common-hook ()
-  (c-add-style "PERSONAL" trinity-c-style t))
+  (c-add-style "PERSONAL" trinity-c-style t)
+  (outline-minor-mode)
+  )
 
 (add-hook 'c-mode-common-hook 'trinity-c-mode-common-hook)
 (add-hook 'lsl-mode-common-hook 'trinity-c-mode-common-hook)
