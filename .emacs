@@ -46,11 +46,19 @@
     (ediff-toggle-multiframe))
     
 ;;; Functions
+(defun perltidy-cleanup ()
+  "Clean up after ediff mode is done"
+  (interactive)
+  (delete-windows-on "*Shell Command Output*")
+  (kill-buffer "*Shell Command Output*")
+  (remove-hook 'ediff-quit-hook 'perltidy-cleanup))
+
 (defun perltidy-buffer ()
   "Run perltidy on the current buffer and enters ediff mode with the changes"
   (interactive)
   (shell-command (concat "perltidy -st " (buffer-file-name (current-buffer))))
-  (ediff-buffers (current-buffer) "*Shell Command Output*"))
+  (ediff-buffers (current-buffer) "*Shell Command Output*")
+  (add-hook 'ediff-quit-hook 'perltidy-cleanup))
 
 (defun list-contains-p (list atom)
   "Search a list for a given atom"
