@@ -42,6 +42,7 @@
 (setq outline-minor-mode-prefix "\C-@")
 
 ;;; Ediff mode
+(require 'ediff)
 (if (eq ediff-window-setup-function 'ediff-setup-windows-multiframe)
     (ediff-toggle-multiframe))
     
