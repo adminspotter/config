@@ -142,6 +142,7 @@
 (autoload 'lsl-mode "lsl-mode.el" "Linden Scripting Language mode" t)
 (autoload 'pov-mode "pov-mode.el" "POVray scene file mode" t)
 (require 'browse-kill-ring)
+(setq browse-kill-ring-quit-action 'save-and-restore)
 
 ;;; Other stuff
 (put 'downcase-region 'disabled nil)
