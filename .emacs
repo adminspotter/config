@@ -13,6 +13,7 @@
 (setq next-line-add-newlines nil)
 (setq make-backup-files nil)
 (setq fill-column 74)
+(setq colon-double-space t)
 (setq display-time-day-and-date t)
 (setq display-time-24hr-format t)
 ;;; Macs require some massaging
