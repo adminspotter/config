@@ -1,5 +1,5 @@
 ;;; The .emacs file of Trinity
-;;;   last updated 10 May 2014, 11:24:58 tquirk
+;;;   last updated 10 Mar 2016, 05:59:09 tquirk
 
 (defalias 'perl-mode 'cperl-mode)
 
@@ -46,7 +46,7 @@
 (require 'ediff)
 (if (eq ediff-window-setup-function 'ediff-setup-windows-multiframe)
     (ediff-toggle-multiframe))
-    
+
 ;;; Functions
 (defun perltidy-cleanup ()
   "Clean up after ediff mode is done"
@@ -134,6 +134,7 @@
 		("\\.pl$" . cperl-mode)
 		("\\.t$" . cperl-mode)
 		("\\.pm$" . cperl-mode)
+                ("\\.glsl$" . glsl-mode)
 		) auto-mode-alist))
 
 ;;; Loading modules
@@ -142,6 +143,7 @@
 
 (autoload 'lsl-mode "lsl-mode.el" "Linden Scripting Language mode" t)
 (autoload 'pov-mode "pov-mode.el" "POVray scene file mode" t)
+(autoload 'glsl-mode "glsl-mode.el" "OpenGL Shader Language mode" t)
 (require 'browse-kill-ring)
 (setq browse-kill-ring-quit-action 'save-and-restore)
 
